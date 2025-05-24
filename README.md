@@ -1,66 +1,99 @@
-## Foundry
+# CreatorArmour Smart Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project uses [Foundry](https://book.getfoundry.sh/) for Ethereum smart contract development.
 
-Foundry consists of:
+## 🚀 Getting Started
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+Follow these steps to set up the project after cloning:
 
-## Documentation
+### 1. Clone the Repository
 
-https://book.getfoundry.sh/
-
-## Usage
-
-### Build
-
-```shell
-$ forge build
+```bash
+git clone <repo-url>
+cd <repo-name>
 ```
 
-### Test
+### 2. Install Foundry (if not already installed)
 
-```shell
-$ forge test
+```bash
+curl -L https://foundry.paradigm.xyz | bash
+foundryup
 ```
 
-### Format
+> You may need to restart your terminal after installing Foundry.
 
-```shell
-$ forge fmt
+### 3. Install Dependencies
+
+```bash
+forge install
 ```
 
-### Gas Snapshots
+This will install any dependencies listed in `foundry.toml` into the `lib/` directory.
 
-```shell
-$ forge snapshot
+### 4. Build the Project
+
+```bash
+make build
 ```
 
-### Anvil
+### 5. Set Environment Variables
 
-```shell
-$ anvil
+If the project uses a `.env` file for secrets or configuration:
+
+```bash
+cp .env.example .env
 ```
 
-### Deploy
+Then open `.env` and update it with your credentials or RPC URLs.
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
+### 6. Run Tests
+
+```bash
+make test
 ```
 
-### Cast
+Check the make file to explore different testing options provided like
 
-```shell
-$ cast <subcommand>
+```bash
+    make test-sepolia
 ```
 
-### Help
+### 7. Deploy or Run Scripts
 
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
+Example for deploying with a local node:
+
+```bash
+    make deploy
 ```
+
+for deploying to anvil
+
+```bash
+    make deploy-sepolia
+```
+
+for sepolia, and so on...
+
+---
+
+## 📂 Project Structure
+
+- `src/` – Contract source files
+- `script/` – Deployment and scripting logic
+- `test/` – Unit tests
+- `lib/` – External libraries (auto-installed)
+- `foundry.toml` – Foundry project config
+
+---
+
+## 🛠 Requirements
+
+- [Foundry](https://book.getfoundry.sh/getting-started/installation)
+- Git
+- (Optional) A local Ethereum node (e.g., Anvil or Hardhat)
+
+---
+
+## 📄 License
+
+MIT
